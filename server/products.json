@@ -1,0 +1,18 @@
+[
+    { "id": 1, "pname": "Blue shirt", "pprice": 500, "rating": 4.4, "category": "shirt", "img": "https://drive.google.com/file/d/1MQ5sKhXFA1BOErzaJsN4Ys_NRl7Z0BjJ/view?usp=drive_link" },
+    { "id": 2, "pname": "Orange shirt", "pprice": 400, "rating": 4.5, "category": "shirt", "img": "https://drive.google.com/file/d/16jdnZU0cJc67vFCDHj8rbHVhkpKDGOxW/view?usp=drive_link" },
+    { "id": 3, "pname": "Pink shirt", "pprice": 600, "rating": 4.7, "category": "shirt", "img": "https://drive.google.com/file/d/1IT-CmfRv9SHboK9mOriVGfqcRqo7v8iK/view?usp=drive_link" },
+    { "id": 4, "pname": "Light Brown shirt", "pprice": 500, "rating": 4.4, "category": "shirt", "img": "https://drive.google.com/file/d/1LKeTR3UQcR0Ak1Gfr8BTnttZgV2MaGc3/view?usp=drive_link" },
+    { "id": 5, "pname": "Dark Pink shirt", "pprice": 600, "rating": 4.4, "category": "shirt", "img": "https://drive.google.com/file/d/1fhkOG5i4iuoABstP-i0aXnuYNwHHpYP3/view?usp=drive_link" },
+    { "id": 6, "pname": "Dark Red shirt", "pprice": 400, "rating": 4.5, "category": "shirt", "img": "https://drive.google.com/file/d/1_5Ns2r1O568Ut8PdfMueSSZse3s9A7lq/view?usp=drive_link" },
+    { "id": 7, "pname": "Yellow shirt", "pprice": 600, "rating": 4.7, "category": "shirt", "img": "https://drive.google.com/file/d/1Yv9n3jTKkkzLuF3oAEHD_cCO35nK9O_U/view?usp=drive_link" },
+    { "id": 8, "pname": "Light grey shirt", "pprice": 700, "rating": 4.7, "category": "shirt", "img": "https://drive.google.com/file/d/1_GImObQmidP-BWM8ypMevaCT4moPZNfQ/view?usp=drive_link" },
+    { "id": 9, "pname": "White-black checked 1", "pprice": 500, "rating": 4.4, "category": "shirt", "img": "https://drive.google.com/file/d/1XXQbL7yoeHE_QYpNPoD9ydTqlEgc_XJo/view?usp=drive_link" },
+    { "id": 10, "pname": "White-black checked 2", "pprice": 500, "rating": 4.5, "category": "shirt", "img": "https://drive.google.com/file/d/1nhhRfGFJ_PhZRj5mkfpUg5TRCzLE3xlm/view?usp=drive_link" },
+    { "id": 11, "pname": "White-black checked 3", "pprice": 500, "rating": 4.5, "category": "shirt", "img": "https://drive.google.com/file/d/1vu7rLWcblQDANDK4kZqlwx10PqbA_9AH/view?usp=drive_link" },
+    { "id": 12, "pname": "White Pattern", "pprice": 700, "rating": 4.7, "category": "shirt", "img": "https://drive.google.com/file/d/1yHtVkQbZrLT6clatFzNaKiyuoo0yRrMY/view?usp=drive_link" },
+    { "id": 13, "pname": "Grey Pattern1", "pprice": 500, "rating": 4.4, "category": "shirt", "img": "https://drive.google.com/file/d/1djgbutC1vz-VaIwo5RRDVCqY9aCc_zhC/view?usp=drive_link" },
+    { "id": 14, "pname": "Grey Pattern2", "pprice": 500, "rating": 4.5, "category": "shirt", "img": "https://drive.google.com/file/d/1Gq5_IH7FTHpr71vEf9MkT6IiqGgLxkIx/view?usp=drive_link" },
+    { "id": 15, "pname": "Black Pattern1", "pprice": 600, "rating": 4.5, "category": "shirt", "img": "https://drive.google.com/file/d/1SFhu2QHNfZADp_ZEvXgpmgO6CvOMwGy9/view?usp=drive_link" },
+    { "id": 16, "pname": "Black Pattern2", "pprice": 600, "rating": 4.7, "category": "shirt", "img": "https://drive.google.com/file/d/1t6TX9l7cIKxnjURHZ1YwcryVsjFiK3mu/view?usp=drive_link" }
+]

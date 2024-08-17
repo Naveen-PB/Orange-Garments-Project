@@ -7,7 +7,7 @@ import About from './pages/Aboutus';
 import Contact from './pages/Contact';
 import Login from './component/Login';
 import Register from './component/Register';
-import SearchComponent from './component/Product';
+import Product from './component/Product';
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
           <Route path='/about' element={<About/>}/>
           <Route path='/contact' element={<Contact/>}/>
           <Route path='/home' element={<Home/>}/>
-          <Route path='/products' element={<SearchComponent/>}/>
+          <Route path='/products' element={<Product/>}/>
           <Route path='/registerform' element={<Register/>}/>
         </Routes>
       </div>

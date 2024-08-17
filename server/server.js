@@ -86,6 +86,29 @@ app.post('/api/login', async (req, res) => {
     }
 });
 
+const productSchema = new mongoose.Schema({
+    pname: { type: String, required: true },
+    pprice: { type: Number, required: true },
+    rating: { type: Number, required: true },
+    category: { type: String, required: true },
+    img: { type: String, required: true },
+    discount: { type: String },  // Optional discount field
+});
+
+const Product = mongoose.model('products', productSchema); // Collection name is 'products'
+
+// API endpoint to get products
+app.get('/api/products', async (req, res) => {
+    try {
+        const products = await Product.find();
+        res.status(200).json(products);
+    } catch (error) {
+        res.status(500).json({ error: 'Error fetching products' });
+    }
+});
+
+
+// Start the server
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
