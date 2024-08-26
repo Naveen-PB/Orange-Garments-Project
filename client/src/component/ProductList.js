@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import ProductCard from './ProductCard';
 
-const ProductList = () => {
+const ProductList = ({ onAddToCart }) => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
@@ -21,7 +21,7 @@ const ProductList = () => {
     return (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
             {products.map((product) => (
-                <ProductCard key={product._id} product={product} />
+                <ProductCard key={product._id} product={product} onAddToCart={onAddToCart} />
             ))}
         </div>
     );
