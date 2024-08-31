@@ -13,6 +13,7 @@ import Wishlist from './component/Wishlist';
 import Cart from './component/Cart';
 import Services from './pages/Services';
 import Navbar from './component/Navbar';
+import ProductPage from './component/ProductPage';
 
 function App() {
   return (
@@ -87,6 +88,7 @@ function App() {
               </PrivateRoute>
             }
           />
+          <Route path="/product/:id" element={<ProductPage/>} />
         </Routes>
       </Router>
     </AuthProvider>

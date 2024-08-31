@@ -1,14 +1,25 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
+
+
 
 const ProductCard = ({ product, onAddToCart }) => {
   const [isWishlisted, setIsWishlisted] = useState(false);
   const [isInCart, setIsInCart] = useState(false);
+  
+  // Initialize useNavigate
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Check if the product is already in the cart
     const currentCart = JSON.parse(localStorage.getItem('cart')) || [];
     const inCart = currentCart.some(item => item._id === product._id);
     setIsInCart(inCart);
+
+    // Check if the product is already in the wishlist
+    const currentWishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+    const inWishlist = currentWishlist.some(item => item._id === product._id);
+    setIsWishlisted(inWishlist);
   }, [product]);
 
   const addToCart = () => {
@@ -36,7 +47,8 @@ const ProductCard = ({ product, onAddToCart }) => {
   };
 
   const buyNow = () => {
-    alert(`Proceed to buy ${product.pname}`);
+    // Navigate to the ProductPage when "Buy Now" is clicked
+    navigate(`/product/${product._id}`); // Assuming the route is set up as /product/:id
   };
 
   const addToWishlist = () => {

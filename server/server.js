@@ -36,18 +36,30 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', userSchema);
 
+// Product schema and model with new fields
+const productSchema = new mongoose.Schema({
+    pname: { type: String, required: true },
+    pprice: { type: Number, required: true },
+    rating: { type: Number, required: true },
+    category: { type: String, required: true },
+    img: { type: String, required: true },
+    discount: { type: String },  // Optional discount field
+    description: { type: String }, // New description field
+    size: { type: String } // New size field
+});
+
+const Product = mongoose.model('products', productSchema); // Collection name is 'products'
+
 // API endpoint to handle registration
 app.post('/api/register', async (req, res) => {
     const { username, email, phoneNumber, password } = req.body;
 
     try {
-        // Check if the email already exists
         const existingUser = await User.findOne({ email });
         if (existingUser) {
             return res.status(400).json({ message: 'Email already registered' });
         }
 
-        // Create a new user
         const newUser = new User({
             username,
             email,
@@ -67,37 +79,19 @@ app.post('/api/login', async (req, res) => {
     const { email, password } = req.body;
 
     try {
-        // Find the user by email
         const user = await User.findOne({ email });
 
-        if (!user) {
+        if (!user || user.password !== password) {
             return res.status(401).json({ message: 'Invalid email or password' });
         }
 
-        // Check if the password matches (plain text comparison)
-        if (user.password !== password) {
-            return res.status(401).json({ message: 'Invalid email or password' });
-        }
-
-        // Authentication successful
         res.status(200).json({ message: 'Login successful' });
     } catch (error) {
         res.status(500).json({ error: 'Error logging in' });
     }
 });
 
-const productSchema = new mongoose.Schema({
-    pname: { type: String, required: true },
-    pprice: { type: Number, required: true },
-    rating: { type: Number, required: true },
-    category: { type: String, required: true },
-    img: { type: String, required: true },
-    discount: { type: String },  // Optional discount field
-});
-
-const Product = mongoose.model('products', productSchema); // Collection name is 'products'
-
-// API endpoint to get products
+// API endpoint to get all products
 app.get('/api/products', async (req, res) => {
     try {
         const products = await Product.find();
@@ -107,6 +101,42 @@ app.get('/api/products', async (req, res) => {
     }
 });
 
+// API endpoint to get a single product by ID
+app.get('/api/products/:id', async (req, res) => {
+    const { id } = req.params;
+    try {
+        const product = await Product.findById(id);
+        if (!product) {
+            return res.status(404).json({ error: 'Product not found' });
+        }
+        res.status(200).json(product);
+    } catch (error) {
+        res.status(500).json({ error: 'Error fetching product' });
+    }
+});
+
+// API endpoint to create a new product (for testing)
+app.post('/api/products', async (req, res) => {
+    const { pname, pprice, rating, category, img, discount, description, size } = req.body;
+
+    try {
+        const newProduct = new Product({
+            pname,
+            pprice,
+            rating,
+            category,
+            img,
+            discount,
+            description, // New field
+            size // New field
+        });
+
+        await newProduct.save();
+        res.status(201).json({ message: 'Product created successfully' });
+    } catch (error) {
+        res.status(500).json({ error: 'Error creating product' });
+    }
+});
 
 // Start the server
 app.listen(port, () => {
