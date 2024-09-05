@@ -23,23 +23,23 @@ export default function Hero() {
   ];
 
   const texts = [
-    "Explore the World of Imagination!",
-    "Discover Exciting Stories for Little Minds",
-    "Spark Creativity with Engaging Reads",
+    "Upgrade Your Wardrobe Today at Orange Garments!",
+    "Discover the Latest Fashion Trends at Orange Garments",
+    "Style that Speaks for Itself – Only at Orange Garments",
   ];
 
   const paragraphs = [
     [
-      "Embark on an adventure through the pages of captivating tales! Our collection of kids' books will transport young readers to magical realms, where imagination knows no bounds.",
-      "Dive into a world of wonder and discovery with enchanting stories that ignite curiosity and inspire young minds to dream big.",
+      "Refresh your closet with the latest arrivals from Orange Garments! Explore our exclusive collection of modern styles, designed for fashion-forward individuals.",
+      "From casual wear to formal attire, our range has everything you need to look your best, no matter the occasion. Shop now and elevate your wardrobe at Orange Garments.",
     ],
     [
-      "Ignite your child's imagination with stories that come to life! From tales of brave heroes to whimsical adventures, our books will keep kids entertained for hours.",
-      "With colorful illustrations and engaging narratives, our selection of children's books is designed to foster a love for reading and learning in every young reader.",
+      "Stay ahead of the fashion curve with our trendsetting pieces at Orange Garments! Whether you're dressing for work or play, we've got styles that will make you stand out.",
+      "Our collection is carefully curated to bring you the hottest trends, with quality fabrics and expert craftsmanship. Discover your new favorite outfits today at Orange Garments!",
     ],
     [
-      "Nurture a love for reading from an early age! Our collection of kids' books is carefully curated to provide endless entertainment and learning opportunities for children of all ages.",
-      "From board books for toddlers to chapter books for young readers, our diverse range of titles offers something for every child to enjoy. Start exploring today!",
+      "Unleash your personal style with our diverse range of clothing at Orange Garments! From chic essentials to bold statement pieces, we have something for everyone.",
+      "Browse our selection of fashion-forward apparel, and get ready to make a lasting impression wherever you go. Your style, your rules – only at Orange Garments!",
     ],
   ];
 

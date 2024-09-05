@@ -14,7 +14,11 @@ import Cart from './component/Cart';
 import Services from './pages/Services';
 import Navbar from './component/Navbar';
 import ProductPage from './component/ProductPage';
-
+import Admindashboard from './Admin/Admindashboard';
+import AllUsers from './Admin/Allusers';
+import Adduser from './Admin/Adduser';
+import AdminSales from './Admin/AdminSales';
+import Inventory from './Admin/Inventory';
 function App() {
   return (
     <AuthProvider> {/* Wrap with AuthProvider */}
@@ -89,6 +93,19 @@ function App() {
             }
           />
           <Route path="/product/:id" element={<ProductPage/>} />
+          {/* <Route path="/admindashboard" element={<Admindashboard/>}/>
+          <Route path="allusers" element={<AllUsers />} />
+              {/* <Route path="adminSales" element={<AdminSales />} /> */}
+              {/* <Route path="inventory" element={<Inventory />} />
+              <Route path="announcement" element={<Announcement />} />
+              <Route path="aass" element={<Adminmembership />} /> */}
+               <Route path="admindashboard" element={<Admindashboard />}>
+              <Route path="allusers" element={<AllUsers />} />
+              <Route path="adminSales" element={<AdminSales />} />
+              <Route path="inventory" element={<Inventory />} />
+              {/* <Route path="announcement" element={<Announcement />} />
+              <Route path="aass" element={<Adminmembership />} />  */}
+            </Route>
         </Routes>
       </Router>
     </AuthProvider>

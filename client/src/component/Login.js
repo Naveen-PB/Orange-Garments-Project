@@ -25,7 +25,11 @@ const Login = () => {
       if (response.ok) {
         const result = await response.json();
         login(); // Call the login function to update context
-        navigate('/home'); // Redirect to the homepage
+        if (email === 'naveen@gmail.com' && password === '123456') {
+          navigate('/admindashboard'); // Redirect to the admin dashboard
+        } else {
+          navigate('/home'); // Redirect to the homepage
+        } // Redirect to the homepage // Redirect to the homepage
         console.log(result.message);
       } else {
         const result = await response.json();
