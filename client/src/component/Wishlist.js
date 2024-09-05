@@ -34,7 +34,7 @@ const Wishlist = () => {
               <img 
                 src={item.img} 
                 alt={item.pname} 
-                className="max-w-full max-h-full object-cover rounded-lg" 
+                className="w-32 h-32 object-cover rounded-lg mx-auto" // Smaller image size
               />
               <h2 className="text-lg font-bold mt-4 text-center">{item.pname}</h2>
               <span className="text-2xl font-bold text-gray-900">₹{item.pprice}</span>
@@ -45,7 +45,7 @@ const Wishlist = () => {
                 View Product
               </Link>
               <button 
-                className="mt-2 block text-center bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600"
+                className="mt-2 block text-center bg-red-500 text-white py-1 px-2 rounded text-sm hover:bg-red-600" // Smaller button size
                 onClick={() => removeFromWishlist(item._id)}
               >
                 Remove
