@@ -66,7 +66,7 @@ const ProductCard = ({ product, onAddToCart }) => {
   };
 
   return (
-    <div className="border rounded-lg p-4 shadow-lg">
+    <div className="border sm rounded-lg p-4 shadow-lg">
       <div className="flex justify-center items-center relative">
         {product.discount && (
           <span className="absolute top-2 left-2 bg-black text-white text-xs font-bold px-2 py-1 rounded-full">
