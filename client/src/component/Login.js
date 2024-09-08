@@ -24,12 +24,17 @@ const Login = () => {
 
       if (response.ok) {
         const result = await response.json();
+        const { category } = result; // Extract the category from the response
+        
         login(); // Call the login function to update context
-        if (email === 'naveen@gmail.com' && password === '123456') {
+        
+        // Navigate based on the category
+        if (category === 'admin') {
           navigate('/admindashboard'); // Redirect to the admin dashboard
         } else {
           navigate('/home'); // Redirect to the homepage
-        } // Redirect to the homepage // Redirect to the homepage
+        }
+
         console.log(result.message);
       } else {
         const result = await response.json();

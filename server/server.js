@@ -2,9 +2,10 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+require('dotenv').config(); // For environment variables
 
 const app = express();
-const port = 5001;
+const port = process.env.PORT || 5001;
 
 // Middleware
 app.use(cors({
@@ -15,23 +16,30 @@ app.use(cors({
 app.use(bodyParser.json());
 
 // MongoDB connection
-mongoose.connect('mongodb://localhost:27017/Orange_Garments', {
+const mongoURI = process.env.MONGO_URI || 'mongodb://localhost:27017/Orange_Garments';
+mongoose.connect(mongoURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
-.then(() => {
-    console.log('Connected to MongoDB');
-})
-.catch((err) => {
-    console.error('Error connecting to MongoDB:', err);
-});
+    .then(() => console.log('Connected to MongoDB'))
+    .catch(err => console.error('Error connecting to MongoDB:', err));
 
 // User schema and model
 const userSchema = new mongoose.Schema({
     username: { type: String, required: true },
-    email: { type: String, required: true },
-    phoneNumber: { type: String, required: true },
+    email: { type: String, required: true, unique: true },
+    phoneNumber: {
+        type: String,
+        required: true,
+        validate: {
+            validator: function (v) {
+                return /^\d+$/.test(v); // Regex to ensure phone number contains only digits
+            },
+            message: props => `${props.value} is not a valid phone number!`
+        }
+    },
     password: { type: String, required: true },
+    category: { type: String, default: 'user' } // Default value is 'user'
 });
 
 const User = mongoose.model('User', userSchema);
@@ -48,7 +56,7 @@ const productSchema = new mongoose.Schema({
     size: { type: String } // New size field
 });
 
-const Product = mongoose.model('products', productSchema); // Collection name is 'products'
+const Product = mongoose.model('Product', productSchema); // Collection name is 'products'
 
 // API endpoint to handle registration
 app.post('/api/register', async (req, res) => {
@@ -64,13 +72,13 @@ app.post('/api/register', async (req, res) => {
             username,
             email,
             phoneNumber,
-            password, // Store password in plain text (not recommended)
+            password, // Store plain text password
         });
 
         await newUser.save();
         res.status(201).json({ message: 'User registered successfully' });
     } catch (error) {
-        res.status(500).json({ error: 'Error registering user' });
+        res.status(500).json({ error: 'Error registering user', details: error.message });
     }
 });
 
@@ -80,14 +88,26 @@ app.post('/api/login', async (req, res) => {
 
     try {
         const user = await User.findOne({ email });
-
-        if (!user || user.password !== password) {
+        if (!user || user.password !== password) { // Compare plain text password
             return res.status(401).json({ message: 'Invalid email or password' });
         }
 
-        res.status(200).json({ message: 'Login successful' });
+        res.status(200).json({
+            message: 'Login successful',
+            category: user.category // Include category field
+        });
     } catch (error) {
-        res.status(500).json({ error: 'Error logging in' });
+        res.status(500).json({ error: 'Error logging in', details: error.message });
+    }
+});
+
+// API endpoint to get all users (both 'user' and 'admin' categories)
+app.get('/api/users', async (req, res) => {
+    try {
+        const users = await User.find();
+        res.status(200).json(users);
+    } catch (error) {
+        res.status(500).json({ error: 'Error fetching users', details: error.message });
     }
 });
 
@@ -97,7 +117,7 @@ app.get('/api/products', async (req, res) => {
         const products = await Product.find();
         res.status(200).json(products);
     } catch (error) {
-        res.status(500).json({ error: 'Error fetching products' });
+        res.status(500).json({ error: 'Error fetching products', details: error.message });
     }
 });
 
@@ -111,7 +131,7 @@ app.get('/api/products/:id', async (req, res) => {
         }
         res.status(200).json(product);
     } catch (error) {
-        res.status(500).json({ error: 'Error fetching product' });
+        res.status(500).json({ error: 'Error fetching product', details: error.message });
     }
 });
 
@@ -134,7 +154,7 @@ app.post('/api/products', async (req, res) => {
         await newProduct.save();
         res.status(201).json({ message: 'Product created successfully' });
     } catch (error) {
-        res.status(500).json({ error: 'Error creating product' });
+        res.status(500).json({ error: 'Error creating product', details: error.message });
     }
 });
 
