@@ -9,8 +9,7 @@ import Contact from './pages/Contact';
 import Product from './component/Product';
 import Register from './component/Register';
 import Offer from './pages/Offer';
-import Wishlist from './component/Wishlist';
-import Cart from './component/Cart';
+
 import Services from './pages/Services';
 import Navbar from './component/Navbar';
 import ProductPage from './component/ProductPage';
@@ -68,22 +67,8 @@ function App() {
               </PrivateRoute>
             }
           />
-          <Route
-            path="/wishlist"
-            element={
-              <PrivateRoute>
-                <Wishlist />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/cart"
-            element={
-              <PrivateRoute>
-                <Cart />
-              </PrivateRoute>
-            }
-          />
+          
+        
           <Route
             path="/services"
             element={

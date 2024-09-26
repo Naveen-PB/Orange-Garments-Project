@@ -83,8 +83,7 @@ function Navbar() {
             <li><Link to="/about" className="block text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white">About Us</Link></li>
             <li><Link to="/products" className="block text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white">Products</Link></li>
             <li><Link to="/contact" className="block text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white">Contact</Link></li>
-            <li><Link to="/cart" className="block text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white">Cart</Link></li>
-            <li><Link to="/wishlist" className="block text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white">Wishlist</Link></li>
+           
             {isAuthenticated ? (
               <li><button onClick={handleLogout} className="block text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white">Logout</button></li>
             ) : (
